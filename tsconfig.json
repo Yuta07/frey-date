@@ -4,7 +4,7 @@
     "moduleResolution": "node",
     "jsx": "react",
     "target": "es5",
-    "types": ["react", "jest"],
+    "types": ["react"],
     "lib": ["es5", "es6", "es7", "es2017", "es2018", "dom", "esnext"],
     "outDir": "./dist",
     "sourceMap": true,
@@ -24,8 +24,7 @@
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "isolatedModules": true
+    "emitDecoratorMetadata": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
