@@ -1,0 +1,29 @@
+{
+  "processors": ["stylelint-processor-styled-components"], {
+    "moduleName": "styled-components",
+    "importName": "default",
+    "strict": false,
+    "ignoreFiles": [],
+  },
+  "extends": [
+    "stylelint-config-standard", 
+    "stylelint-config-styled-components", 
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "color-no-invalid-hex": true,
+    color-hex-length: "long",
+    "color-hex-case": [
+      "lower",
+      {
+        "message": "Lowercase letters are easier to distinguish from numbers"
+      }
+    ],
+    font-family-no-duplicate-names: true,
+    property-no-unknown: true,
+    media-feature-name-no-unknown: true,
+    no-extra-semicolons: true,
+    number-max-precision: 3,
+  },
+  "syntax": "scss"
+}

@@ -1,7 +1,21 @@
 {
   "name": "frey-dates",
   "version": "0.1.0",
-  "main": "index.js",
+  "author": "Yuta07 <yutazon.me@gmail.com>",
+  "description": "",
+  "homepage": "https://github.com/Yuta07/frey-dates#readme",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "bugs": {
+    "url": "https://github.com/Yuta07/frey-dates/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuta07/frey-dates.git"
+  },
   "license": "MIT",
   "private": false,
   "devDependencies": {
@@ -11,5 +25,19 @@
     "react-dom": "^16.13.1",
     "ts-loader": "^7.0.2",
     "typescript": "^3.8.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts, tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
