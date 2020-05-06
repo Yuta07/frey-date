@@ -17,21 +17,27 @@ export const Text = ({ color = 'PRIMARY', text, type }: Props) => {
     case 'strong':
       content = (
         <>
-          <HeadingSecond themes={themes}>{text}</HeadingSecond>
+          <HeadingSecond color={color} themes={themes}>
+            {text}
+          </HeadingSecond>
         </>
       );
       break;
     case 'p':
       content = (
         <>
-          <Paragraph themes={themes}>{text}</Paragraph>
+          <Paragraph color={color} themes={themes}>
+            {text}
+          </Paragraph>
         </>
       );
       break;
     case 'span':
       content = (
         <>
-          <Span themes={themes}>{text}</Span>
+          <Span color={color} themes={themes}>
+            {text}
+          </Span>
         </>
       );
       break;
@@ -42,33 +48,33 @@ export const Text = ({ color = 'PRIMARY', text, type }: Props) => {
   return <>{content}</>;
 };
 
-const HeadingSecond = styled.p<{ themes: Theme }>`
-  ${({ themes }) => {
+const HeadingSecond = styled.p<{ color: string; themes: Theme }>`
+  ${({ color, themes }) => {
     const { fontSize, palette } = themes;
     return css`
       font-size: ${fontSize.LARGE}px;
-      color: ${palette.PRIMARY};
+      color: ${palette[color]};
       font-weight: 550;
     `;
   }}
 `;
 
-const Paragraph = styled.p<{ themes: Theme }>`
-  ${({ themes }) => {
+const Paragraph = styled.p<{ color: string; themes: Theme }>`
+  ${({ color, themes }) => {
     const { fontSize, palette } = themes;
     return css`
       font-size: ${fontSize.LARGE}px;
-      color: ${palette.PRIMARY};
+      color: ${palette[color]};
     `;
   }}
 `;
 
-const Span = styled.span<{ themes: Theme }>`
-  ${({ themes }) => {
+const Span = styled.span<{ color: string; themes: Theme }>`
+  ${({ color, themes }) => {
     const { fontSize, palette } = themes;
     return css`
       font-size: ${fontSize.MEDIUM}px;
-      color: ${palette.PRIMARY};
+      color: ${palette[color]};
     `;
   }}
 `;

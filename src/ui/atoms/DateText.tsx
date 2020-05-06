@@ -30,7 +30,7 @@ export const DateText = ({ color = 'PRIMARY', date }: Props) => {
     }
   };
 
-  let textColor: string = themes.palette.PRIMARY;
+  let textColor: string = themes.palette[color];
   if (date.type === 'prev' || date.type === 'next') {
     textColor = themes.palette['GRAY'];
   } else if (date.date.match(/Saturday/)) {
@@ -43,7 +43,7 @@ export const DateText = ({ color = 'PRIMARY', date }: Props) => {
 
   return (
     <DateButton selected={selected} themes={themes} onClick={handleClickDate}>
-      <Text color={textColor} themes={themes}>
+      <Text color={textColor} selected={selected} themes={themes}>
         {Number(date.date.split('-')[2]).toString()}
       </Text>
     </DateButton>
@@ -79,12 +79,12 @@ const DateButton = styled.button<{ selected: boolean; themes: Theme }>`
   }}
 `;
 
-const Text = styled.span<{ color: string; themes: Theme }>`
-  ${({ color, themes }) => {
-    const { fontSize } = themes;
+const Text = styled.span<{ color: string; selected: boolean; themes: Theme }>`
+  ${({ color, selected, themes }) => {
+    const { palette, fontSize } = themes;
     return css`
       font-size: ${fontSize.MEDIUM}px;
-      color: ${color};
+      color: ${selected ? palette.SECONDARY : color};
     `;
   }}
 `;
