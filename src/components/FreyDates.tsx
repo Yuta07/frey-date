@@ -9,7 +9,7 @@ type Props = {
   onClickDate?: (date: string) => void;
 };
 
-const FreyDates = ({ registerdDates = [], selectedDates = [], onClickDate = () => {} }: Props) => {
+const FreyDateProvider = ({ registerdDates = [], selectedDates = [], onClickDate = () => {} }: Props) => {
   const { currentYear, currentMonth } = React.useContext(FreyDateContext);
   const [year, setYear] = useState(currentYear);
   const [month, setMonth] = useState(currentMonth);
@@ -46,4 +46,4 @@ const FreyDates = ({ registerdDates = [], selectedDates = [], onClickDate = () =
   );
 };
 
-export default FreyDates;
+export default FreyDateProvider;
