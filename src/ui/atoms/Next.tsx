@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  changeNextMonth: () => void;
+  onMoveNextMonth: () => void;
 };
 
-export const Next = ({ changeNextMonth }: Props) => {
+export const Next = ({ onMoveNextMonth }: Props) => {
   return (
-    <NextButton onClick={changeNextMonth}>
+    <NextButton onClick={onMoveNextMonth}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={24}

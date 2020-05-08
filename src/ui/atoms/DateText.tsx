@@ -1,18 +1,16 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { FreyDateContext } from '../../components/FreyDateProvider';
 import { useTheme } from '../../hooks/useTheme';
-import { Theme } from '../../themes/Theme';
-import { DayList } from '../../types';
+import { AppTypes, DayList } from '../../types';
 
-type Props = {
+interface Props extends AppTypes {
   color?: string;
   date: DayList;
-};
+}
 
-export const DateText = ({ color = 'PRIMARY', date }: Props) => {
+export const DateText = ({ color = '#34495e', ...props }: Props) => {
+  const { registerdDates, onClickDate, onMovePreviousMonth, onMoveNextMonth, date } = props;
   const themes = useTheme();
-  const { values, onClickDate, onClickPreviousMonth, onClickNextMonth } = React.useContext(FreyDateContext);
 
   const handleClickDate = (): void => {
     switch (date.type) {
@@ -20,17 +18,17 @@ export const DateText = ({ color = 'PRIMARY', date }: Props) => {
         onClickDate(date.date);
         break;
       case 'prev':
-        onClickPreviousMonth();
+        onMovePreviousMonth();
         break;
       case 'next':
-        onClickNextMonth();
+        onMoveNextMonth();
         break;
       default:
         break;
     }
   };
 
-  let textColor: string = themes.palette[color];
+  let textColor: string = color;
   if (date.type === 'prev' || date.type === 'next') {
     textColor = themes.palette['GRAY'];
   } else if (date.date.match(/Saturday/)) {
@@ -39,26 +37,25 @@ export const DateText = ({ color = 'PRIMARY', date }: Props) => {
     textColor = themes.palette['SUNDAY'];
   }
 
-  const selected = values.indexOf(date.date) !== -1 ? true : false;
+  const selected = registerdDates.indexOf(date.date) !== -1 ? true : false;
 
   return (
-    <DateButton selected={selected} themes={themes} onClick={handleClickDate}>
-      <Text color={textColor} selected={selected} themes={themes}>
+    <DateButton selected={selected} onClick={handleClickDate}>
+      <Text color={textColor} selected={selected}>
         {Number(date.date.split('-')[2]).toString()}
       </Text>
     </DateButton>
   );
 };
 
-const DateButton = styled.button<{ selected: boolean; themes: Theme }>`
-  ${({ selected, themes }) => {
-    const { palette } = themes;
+const DateButton = styled.button<{ selected: boolean }>`
+  ${({ selected }) => {
     return css`
       width: 34px;
       padding: 0.5rem 0;
       border: none;
       border-radius: 50%;
-      background: ${selected ? palette.MAIN : 'none'};
+      background: ${selected ? '#f39c12' : 'none'};
       cursor: pointer;
 
       &:focus {
@@ -79,12 +76,11 @@ const DateButton = styled.button<{ selected: boolean; themes: Theme }>`
   }}
 `;
 
-const Text = styled.span<{ color: string; selected: boolean; themes: Theme }>`
-  ${({ color, selected, themes }) => {
-    const { palette, fontSize } = themes;
+const Text = styled.span<{ color: string; selected: boolean }>`
+  ${({ color, selected }) => {
     return css`
-      font-size: ${fontSize.MEDIUM}px;
-      color: ${selected ? palette.SECONDARY : color};
+      font-size: 14px;
+      color: ${selected ? '#fefefe' : color};
     `;
   }}
 `;

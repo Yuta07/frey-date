@@ -4,33 +4,34 @@ import { Next } from '../atoms/Next';
 import { Previous } from '../atoms/Previous';
 import { Text } from '../atoms/Text';
 import { useTheme } from '../../hooks/useTheme';
-import { Theme } from '../../themes/Theme';
-import { FreyDateContext } from '../../components/FreyDateProvider';
+import { AppTypes } from '../../types';
 
-export const CalendarHeader = () => {
-  const { currentYear, currentMonth, onClickPreviousMonth, onClickNextMonth } = React.useContext(FreyDateContext);
+export const CalendarHeader = ({ ...props }: AppTypes) => {
+  const { currentYear, currentMonth, onMovePreviousMonth, onMoveNextMonth } = props;
   const themes = useTheme();
 
   return (
-    <Header themes={themes}>
-      <Previous changePreviousMonth={onClickPreviousMonth} />
-      <Text color="SECONDARY" text={currentYear.toString() + '年 ' + currentMonth.toString() + '月'} type="strong" />
-      <Next changeNextMonth={onClickNextMonth} />
+    <Header color={themes.palette.MAIN}>
+      <Previous onMovePreviousMonth={onMovePreviousMonth} />
+      <Text
+        color={themes.palette.SECONDARY}
+        text={currentYear.toString() + '年 ' + currentMonth.toString() + '月'}
+        type="strong"
+      />
+      <Next onMoveNextMonth={onMoveNextMonth} />
     </Header>
   );
 };
 
-const Header = styled.div<{ themes: Theme }>`
-  ${({ themes }) => {
-    const { palette } = themes;
-
+const Header = styled.div<{ color: string }>`
+  ${({ color }) => {
     return css`
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
       padding: 10px 5px 5px;
-      background-color: ${palette.MAIN};
+      background-color: ${color};
       border-radius: 8px 8px 0 0;
     `;
   }}

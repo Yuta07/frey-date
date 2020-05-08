@@ -9,7 +9,7 @@ export const DayWeekList = () => {
     return (
       <Fragment key={dayweek}>
         <DayofWeekList>
-          <Text color="GRAY" text={dayweek} type="span" />
+          <Text color="#95a5a6" text={dayweek} type="span" />
         </DayofWeekList>
       </Fragment>
     );

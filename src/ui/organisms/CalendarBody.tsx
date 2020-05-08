@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import styled, { css } from 'styled-components';
 import { CalendarList } from '../molecules/CalendarList';
 import { DayWeekList } from '../molecules/DayWeekList';
-import { Theme } from '../../themes/Theme';
 import { useTheme } from '../../hooks/useTheme';
 import { DayList } from '../../types';
 import {
@@ -14,15 +13,24 @@ import {
   getDateFromBefore,
   getDateFromOpposite,
 } from '../../utils/ConvertDate';
-import { FreyDateContext } from '../../components/FreyDateProvider';
+import { AppTypes } from '../../types';
 
-type Props = {
+interface Props extends AppTypes {
   border?: boolean;
-};
+}
 
-export const CalendarBody = ({ border }: Props) => {
+export const CalendarBody = ({ ...props }: Props) => {
+  const {
+    border,
+    registerdDates,
+    selectedDates,
+    onClickDate,
+    currentYear,
+    currentMonth,
+    onMovePreviousMonth,
+    onMoveNextMonth,
+  } = props;
   const themes = useTheme();
-  const { currentYear, currentMonth } = React.useContext(FreyDateContext);
 
   const startDayofWeek = getDayofWeek(getStartDate(currentYear, currentMonth));
   const previousMonthDate = getPreviousMonthDate(getStartDate(currentYear, currentMonth));
@@ -74,11 +82,20 @@ export const CalendarBody = ({ border }: Props) => {
   return (
     <>
       <DayWeekList />
-      <CalenderBodyField border={border} themes={themes}>
+      <CalenderBodyField border={border} color={themes.palette.GRAY}>
         {dateList.map((list, index) => {
           return (
             <Fragment key={index}>
-              <CalendarList dateList={list} />
+              <CalendarList
+                registerdDates={registerdDates}
+                selectedDates={selectedDates}
+                onClickDate={onClickDate}
+                currentYear={currentYear}
+                currentMonth={currentMonth}
+                onMovePreviousMonth={onMovePreviousMonth}
+                onMoveNextMonth={onMoveNextMonth}
+                dateList={list}
+              />
             </Fragment>
           );
         })}
@@ -87,13 +104,12 @@ export const CalendarBody = ({ border }: Props) => {
   );
 };
 
-const CalenderBodyField = styled.div<{ border: Props['border']; themes: Theme }>`
-  ${({ border, themes }) => {
-    const { palette } = themes;
+const CalenderBodyField = styled.div<{ border: Props['border']; color: string }>`
+  ${({ border, color }) => {
     return css`
       padding: 0 5px 5px;
       background: #fafcff;
-      border: 1px solid ${border ? palette.GRAY : 'transparent'};
+      border: 1px solid ${border ? color : 'transparent'};
       border-top: none;
       border-radius: 0 0 8px 8px;
     `;

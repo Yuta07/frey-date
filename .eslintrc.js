@@ -24,8 +24,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'prettier/@typescript-eslint',
+    'plugin:react-hooks/recommended',
   ],
-  plugins: ['@typescript-eslint', 'prettier', 'react'],
+  plugins: ['react-hooks', '@typescript-eslint', 'prettier', 'react'],
   rules: {
     '@typescript-eslint/no-namespace': 'error',
     '@typescript-eslint/no-require-imports': 'warn',
@@ -33,6 +34,8 @@ module.exports = {
     '@typescript-eslint/prefer-for-of': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   settings: {
     react: {

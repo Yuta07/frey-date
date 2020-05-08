@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
-  changePreviousMonth: () => void;
+  onMovePreviousMonth: () => void;
 };
 
-export const Previous = ({ changePreviousMonth }: Props) => {
+export const Previous = ({ onMovePreviousMonth }: Props) => {
   return (
-    <PreviousButton onClick={changePreviousMonth}>
+    <PreviousButton onClick={onMovePreviousMonth}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={24}

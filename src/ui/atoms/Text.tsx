@@ -1,7 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { useTheme } from '../../hooks/useTheme';
-import { Theme } from '../../themes/Theme';
 
 type Props = {
   color?: string;
@@ -9,35 +7,28 @@ type Props = {
   type: 'strong' | 'p' | 'span';
 };
 
-export const Text = ({ color = 'PRIMARY', text, type }: Props) => {
-  const themes = useTheme();
+export const Text = ({ color = '#fefefe', text, type }: Props) => {
   let content: React.ReactNode;
 
   switch (type) {
     case 'strong':
       content = (
         <>
-          <HeadingSecond color={color} themes={themes}>
-            {text}
-          </HeadingSecond>
+          <HeadingSecond color={color}>{text}</HeadingSecond>
         </>
       );
       break;
     case 'p':
       content = (
         <>
-          <Paragraph color={color} themes={themes}>
-            {text}
-          </Paragraph>
+          <Paragraph color={color}>{text}</Paragraph>
         </>
       );
       break;
     case 'span':
       content = (
         <>
-          <Span color={color} themes={themes}>
-            {text}
-          </Span>
+          <Span color={color}>{text}</Span>
         </>
       );
       break;
@@ -48,33 +39,30 @@ export const Text = ({ color = 'PRIMARY', text, type }: Props) => {
   return <>{content}</>;
 };
 
-const HeadingSecond = styled.p<{ color: string; themes: Theme }>`
-  ${({ color, themes }) => {
-    const { fontSize, palette } = themes;
+const HeadingSecond = styled.p<{ color: string }>`
+  ${({ color }) => {
     return css`
-      font-size: ${fontSize.LARGE}px;
-      color: ${palette[color]};
+      font-size: 16px;
+      color: ${color};
       font-weight: 550;
     `;
   }}
 `;
 
-const Paragraph = styled.p<{ color: string; themes: Theme }>`
-  ${({ color, themes }) => {
-    const { fontSize, palette } = themes;
+const Paragraph = styled.p<{ color: string }>`
+  ${({ color }) => {
     return css`
-      font-size: ${fontSize.LARGE}px;
-      color: ${palette[color]};
+      font-size: 16px;
+      color: ${color};
     `;
   }}
 `;
 
-const Span = styled.span<{ color: string; themes: Theme }>`
-  ${({ color, themes }) => {
-    const { fontSize, palette } = themes;
+const Span = styled.span<{ color: string }>`
+  ${({ color }) => {
     return css`
-      font-size: ${fontSize.MEDIUM}px;
-      color: ${palette[color]};
+      font-size: 16px;
+      color: ${color};
     `;
   }}
 `;
