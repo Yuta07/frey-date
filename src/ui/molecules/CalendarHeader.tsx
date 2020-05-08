@@ -4,9 +4,9 @@ import { Next } from '../atoms/Next';
 import { Previous } from '../atoms/Previous';
 import { Text } from '../atoms/Text';
 import { useTheme } from '../../hooks/useTheme';
-import { AppTypes } from '../../types';
+import { HeaderProps } from '../../types';
 
-export const CalendarHeader = ({ ...props }: AppTypes) => {
+export const CalendarHeader = ({ ...props }: HeaderProps) => {
   const { currentYear, currentMonth, onMovePreviousMonth, onMoveNextMonth } = props;
   const themes = useTheme();
 

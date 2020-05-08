@@ -9,6 +9,13 @@ export interface FreyProps {
   onClickDate: (date: string) => void;
 }
 
+export type HeaderProps = {
+  currentYear: number;
+  currentMonth: number;
+  onMovePreviousMonth: () => void;
+  onMoveNextMonth: () => void;
+};
+
 export interface AppTypes extends FreyProps {
   currentYear: number;
   currentMonth: number;
