@@ -4,10 +4,17 @@ export type DayList = {
 };
 
 export interface FreyProps {
-  registerdDates: string[];
-  selectedDates: string[];
+  registerdDates: string[] | string;
+  selectedDates: string[] | string;
   onClickDate: (date: string) => void;
 }
+
+export type DateTextProps = {
+  registerdDates: string[] | string;
+  onClickDate: (date: string) => void;
+  onMovePreviousMonth: () => void;
+  onMoveNextMonth: () => void;
+};
 
 export type HeaderProps = {
   currentYear: number;

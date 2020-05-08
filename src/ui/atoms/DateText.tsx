@@ -1,16 +1,14 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { useTheme } from '../../hooks/useTheme';
-import { AppTypes, DayList } from '../../types';
+import { DateTextProps, DayList } from '../../types';
 
-interface Props extends AppTypes {
+interface Props extends DateTextProps {
   color?: string;
   date: DayList;
 }
 
 export const DateText = ({ color = '#34495e', ...props }: Props) => {
   const { registerdDates, onClickDate, onMovePreviousMonth, onMoveNextMonth, date } = props;
-  const themes = useTheme();
 
   const handleClickDate = (): void => {
     switch (date.type) {
@@ -30,11 +28,11 @@ export const DateText = ({ color = '#34495e', ...props }: Props) => {
 
   let textColor: string = color;
   if (date.type === 'prev' || date.type === 'next') {
-    textColor = themes.palette['GRAY'];
+    textColor = '#95a5a6';
   } else if (date.date.match(/Saturday/)) {
-    textColor = themes.palette['SATURDAY'];
+    textColor = '#2980b9';
   } else if (date.date.match(/Sunday/)) {
-    textColor = themes.palette['SUNDAY'];
+    textColor = '#e74c3c';
   }
 
   const selected = registerdDates.indexOf(date.date) !== -1 ? true : false;

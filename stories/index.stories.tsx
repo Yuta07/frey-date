@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import styled from 'styled-components';
-import FreyDates from '../src/components/FreyDates';
+import { FreyDates } from '../src/components/FreyDates';
 
 const FreyDatesStories = () => {
   const [registerdDates, setRegisterdDates] = React.useState([]);

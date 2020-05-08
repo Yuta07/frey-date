@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import styled, { css } from 'styled-components';
 import { CalendarList } from '../molecules/CalendarList';
 import { DayWeekList } from '../molecules/DayWeekList';
-import { useTheme } from '../../hooks/useTheme';
 import { DayList } from '../../types';
 import {
   getStartDate,
@@ -23,14 +22,12 @@ export const CalendarBody = ({ ...props }: Props) => {
   const {
     border,
     registerdDates,
-    selectedDates,
     onClickDate,
     currentYear,
     currentMonth,
     onMovePreviousMonth,
     onMoveNextMonth,
   } = props;
-  const themes = useTheme();
 
   const startDayofWeek = getDayofWeek(getStartDate(currentYear, currentMonth));
   const previousMonthDate = getPreviousMonthDate(getStartDate(currentYear, currentMonth));
@@ -82,16 +79,13 @@ export const CalendarBody = ({ ...props }: Props) => {
   return (
     <>
       <DayWeekList />
-      <CalenderBodyField border={border} color={themes.palette.GRAY}>
+      <CalenderBodyField border={border} color="#95a5a6">
         {dateList.map((list, index) => {
           return (
             <Fragment key={index}>
               <CalendarList
                 registerdDates={registerdDates}
-                selectedDates={selectedDates}
                 onClickDate={onClickDate}
-                currentYear={currentYear}
-                currentMonth={currentMonth}
                 onMovePreviousMonth={onMovePreviousMonth}
                 onMoveNextMonth={onMoveNextMonth}
                 dateList={list}

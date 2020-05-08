@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 import { Calendar } from '../ui/organisms/Calendar';
 import { GlobalStyle } from '../styles/global';
@@ -7,38 +7,43 @@ import { FreyProps } from '../types';
 const initialMonth = moment().month();
 const initialYear = moment().year();
 
-const FreyDates = ({ registerdDates = [], selectedDates = [], onClickDate = () => {} }: FreyProps) => {
-  const [currentYear, setCurrentYear] = useState(initialYear);
-  const [currentMonth, setcurrentMonth] = useState(initialMonth + 1);
+export class FreyDates extends Component<FreyProps, { currentYear: number; currentMonth: number }> {
+  constructor(props: FreyProps) {
+    super(props);
+    this.state = {
+      currentYear: initialYear,
+      currentMonth: initialMonth + 1,
+    };
+  }
 
-  const onMovePreviousMonth = () => {
-    const newMonth = currentMonth - 1 < 1 ? 12 : Number(currentMonth) - 1;
-    const newYear = newMonth === 12 ? currentYear - 1 : currentYear;
-    setcurrentMonth(newMonth);
-    setCurrentYear(newYear);
+  onMovePreviousMonth = () => {
+    const newMonth = this.state.currentMonth - 1 < 1 ? 12 : Number(this.state.currentMonth) - 1;
+    const newYear = newMonth === 12 ? this.state.currentYear - 1 : this.state.currentYear;
+    this.setState({ currentMonth: newMonth });
+    this.setState({ currentYear: newYear });
   };
 
-  const onMoveNextMonth = () => {
-    const newMonth = currentMonth + 1 > 12 ? 1 : Number(currentMonth) + 1;
-    const newYear = newMonth === 1 ? currentYear + 1 : currentYear;
-    setcurrentMonth(newMonth);
-    setCurrentYear(newYear);
+  onMoveNextMonth = () => {
+    const newMonth = this.state.currentMonth + 1 > 12 ? 1 : Number(this.state.currentMonth) + 1;
+    const newYear = newMonth === 1 ? this.state.currentYear + 1 : this.state.currentYear;
+    this.setState({ currentMonth: newMonth });
+    this.setState({ currentYear: newYear });
   };
 
-  return (
-    <>
-      <GlobalStyle />
-      <Calendar
-        currentYear={currentYear}
-        currentMonth={currentMonth}
-        registerdDates={registerdDates}
-        selectedDates={selectedDates}
-        onClickDate={onClickDate}
-        onMovePreviousMonth={onMovePreviousMonth}
-        onMoveNextMonth={onMoveNextMonth}
-      />
-    </>
-  );
-};
-
-export default FreyDates;
+  render() {
+    return (
+      <>
+        <GlobalStyle />
+        <Calendar
+          currentYear={this.state.currentYear}
+          currentMonth={this.state.currentMonth}
+          registerdDates={this.props.registerdDates}
+          selectedDates={this.props.selectedDates}
+          onClickDate={this.props.onClickDate}
+          onMovePreviousMonth={this.onMovePreviousMonth}
+          onMoveNextMonth={this.onMoveNextMonth}
+        />
+      </>
+    );
+  }
+}
