@@ -20,7 +20,7 @@
   "private": false,
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@storybook/addon-a11y": "^5.3.18",
+    "@storybook/addon-a11y": "^6.0.21",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-info": "^5.3.18",
