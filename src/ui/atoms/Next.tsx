@@ -1,20 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTheme } from '../../themes/ThemeProvider';
 
 type Props = {
   onMoveNextMonth: () => void;
 };
 
 export const Next = ({ onMoveNextMonth }: Props) => {
+  const themes = useTheme();
+  const { palette, theme } = themes;
+
   return (
     <NextButton onClick={onMoveNextMonth}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={24}
-        height={24}
-        viewBox="0 0 24 24"
+        width={20}
+        height={20}
+        viewBox="0 0 20 20"
         fill="none"
-        stroke="#fefefe"
+        stroke={palette[theme].PRIMARY}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

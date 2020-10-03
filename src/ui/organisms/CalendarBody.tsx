@@ -12,23 +12,23 @@ import {
   getDateFromBefore,
   getDateFromOpposite,
 } from '../../utils/ConvertDate';
-import { AppTypes } from '../../types';
+import { AppProps } from '../../types';
 
-interface Props extends AppTypes {
+type Props = {
   border?: boolean;
-}
+};
 
-export const CalendarBody = ({ ...props }: Props) => {
-  const {
-    border,
-    registerdDates,
-    onClickDate,
-    currentYear,
-    currentMonth,
-    onMovePreviousMonth,
-    onMoveNextMonth,
-  } = props;
+type BodyProps = Props & AppProps;
 
+export const CalendarBody = ({
+  border,
+  registeredDates,
+  handleDateClick,
+  currentYear,
+  currentMonth,
+  onMovePreviousMonth,
+  onMoveNextMonth,
+}: BodyProps) => {
   const startDayofWeek = getDayofWeek(getStartDate(currentYear, currentMonth));
   const previousMonthDate = getPreviousMonthDate(getStartDate(currentYear, currentMonth));
   const nextMonthDate = getNextMonthDate(getLastDate(currentYear, currentMonth));
@@ -84,8 +84,8 @@ export const CalendarBody = ({ ...props }: Props) => {
           return (
             <Fragment key={index}>
               <CalendarList
-                registerdDates={registerdDates}
-                onClickDate={onClickDate}
+                registeredDates={registeredDates}
+                handleDateClick={handleDateClick}
                 onMovePreviousMonth={onMovePreviousMonth}
                 onMoveNextMonth={onMoveNextMonth}
                 dateList={list}

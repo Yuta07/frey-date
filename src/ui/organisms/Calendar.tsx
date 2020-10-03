@@ -2,21 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import { CalendarBody } from './CalendarBody';
 import { CalendarHeader } from '../molecules/CalendarHeader';
-import { AppTypes } from '../../types';
+import { AppProps } from '../../types';
 
-export const Calendar = ({ ...props }: AppTypes) => {
-  const {
-    registerdDates,
-    selectedDates,
-    onClickDate,
-    currentYear,
-    currentMonth,
-    onMovePreviousMonth,
-    onMoveNextMonth,
-  } = props;
-
+export const Calendar = ({
+  registeredDates,
+  selectedDates,
+  handleDateClick,
+  currentYear,
+  currentMonth,
+  onMovePreviousMonth,
+  onMoveNextMonth,
+}: AppProps) => {
   return (
-    <Flamework>
+    <Wrapper className="frey-dates-wrapper">
       <CalendarHeader
         currentYear={currentYear}
         currentMonth={currentMonth}
@@ -24,19 +22,19 @@ export const Calendar = ({ ...props }: AppTypes) => {
         onMoveNextMonth={onMoveNextMonth}
       />
       <CalendarBody
-        registerdDates={registerdDates}
+        registeredDates={registeredDates}
         selectedDates={selectedDates}
-        onClickDate={onClickDate}
+        handleDateClick={handleDateClick}
         currentYear={currentYear}
         currentMonth={currentMonth}
         onMovePreviousMonth={onMovePreviousMonth}
         onMoveNextMonth={onMoveNextMonth}
       />
-    </Flamework>
+    </Wrapper>
   );
 };
 
-const Flamework = styled.div`
+const Wrapper = styled.div`
   height: 100%;
   width: 280px;
 `;

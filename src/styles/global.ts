@@ -1,20 +1,7 @@
-import { createGlobalStyle, css } from 'styled-components';
-import { FONT_FAMILY, FONT_SIZE } from '../themes/Font';
-import { MEDIA_QUERY } from '../themes/Media';
+import { createGlobalStyle } from 'styled-components';
 
-const bodyStyles = css`
-  font-size: ${FONT_SIZE.LARGE}px;
-  font-family: ${FONT_FAMILY};
-  letter-spacing: 0.1em;
-
-  @media ${MEDIA_QUERY.TABLET} {
-    font-size: ${FONT_SIZE.MEDIUM}px;
-  }
-
-  @media ${MEDIA_QUERY.MOBILE} {
-    font-size: ${FONT_SIZE.SMALL}px;
-  }
-`;
+const FONT_FAMILY =
+  '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -25,6 +12,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    ${bodyStyles}
+    font-size: 14px;
+  font-family: ${FONT_FAMILY};
+  letter-spacing: 0.1em;
   }
 `;

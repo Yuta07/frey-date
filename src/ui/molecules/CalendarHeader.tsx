@@ -3,21 +3,27 @@ import styled, { css } from 'styled-components';
 import { Next } from '../atoms/Next';
 import { Previous } from '../atoms/Previous';
 import { Text } from '../atoms/Text';
-import { HeaderProps } from '../../types';
+import { useTheme } from '../../themes/ThemeProvider';
+import { CalendarProps } from '../../types';
 
-export const CalendarHeader = ({ ...props }: HeaderProps) => {
-  const { currentYear, currentMonth, onMovePreviousMonth, onMoveNextMonth } = props;
+export const CalendarHeader = ({ currentYear, currentMonth, onMovePreviousMonth, onMoveNextMonth }: CalendarProps) => {
+  const themes = useTheme();
+  const { palette, theme } = themes;
 
   return (
-    <Header color="#f39c12">
+    <Header color={palette[theme].PRIMARY} className="frey-dates-header">
       <Previous onMovePreviousMonth={onMovePreviousMonth} />
-      <Text color="#fefefe" text={currentYear.toString() + '年 ' + currentMonth.toString() + '月'} type="strong" />
+      <Text
+        color={palette[theme].PRIMARY}
+        text={currentYear.toString() + '年 ' + currentMonth.toString() + '月'}
+        type="strong"
+      />
       <Next onMoveNextMonth={onMoveNextMonth} />
     </Header>
   );
 };
 
-const Header = styled.div<{ color: string }>`
+const Header = styled.header<{ color: string }>`
   ${({ color }) => {
     return css`
       display: flex;
@@ -25,7 +31,7 @@ const Header = styled.div<{ color: string }>`
       align-items: center;
       justify-content: space-between;
       padding: 10px 5px 5px;
-      background-color: ${color};
+      color: ${color};
       border-radius: 8px 8px 0 0;
     `;
   }}

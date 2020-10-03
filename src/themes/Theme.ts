@@ -1,21 +1,21 @@
-import { FontSize, FONT_SIZE } from './Font';
-import { MediaQuery, Device, MEDIA_QUERY, DEVICE } from './Media';
 import { Palette, PALETTE } from './Palette';
+
+export type Background = 'light' | 'dark' | 'transparent';
 
 export interface Theme {
   palette: Palette;
-  fontSize: FontSize;
-  media: MediaQuery;
-  device: Device;
+  saturdayColor: string;
+  sundayColor: string;
+  theme: Background;
 }
 
 export const theme = () => {
-  const freyTheme: Theme = {
+  const appTheme: Theme = {
     palette: PALETTE,
-    fontSize: FONT_SIZE,
-    media: MEDIA_QUERY,
-    device: DEVICE,
+    saturdayColor: '#54a0ff',
+    sundayColor: '#ee5253',
+    theme: 'light',
   };
 
-  return freyTheme;
+  return appTheme;
 };

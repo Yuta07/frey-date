@@ -1,19 +1,29 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { DateTextProps, DayList } from '../../types';
+import { useTheme } from '../../themes/ThemeProvider';
+import { AppProps, DayList } from '../../types';
 
-interface Props extends DateTextProps {
+type DateTextProps = Pick<AppProps, 'registeredDates' | 'handleDateClick' | 'onMovePreviousMonth' | 'onMoveNextMonth'>;
+
+interface Props {
   color?: string;
   date: DayList;
 }
 
-export const DateText = ({ color = '#34495e', ...props }: Props) => {
-  const { registerdDates, onClickDate, onMovePreviousMonth, onMoveNextMonth, date } = props;
+export const DateText = ({
+  registeredDates,
+  handleDateClick,
+  onMovePreviousMonth,
+  onMoveNextMonth,
+  date,
+}: Props & DateTextProps) => {
+  const themes = useTheme();
+  const { palette, saturdayColor, sundayColor, theme } = themes;
 
   const handleClickDate = (): void => {
     switch (date.type) {
       case 'current':
-        onClickDate(date.date);
+        handleDateClick(date.date);
         break;
       case 'prev':
         onMovePreviousMonth();
@@ -26,16 +36,16 @@ export const DateText = ({ color = '#34495e', ...props }: Props) => {
     }
   };
 
-  let textColor: string = color;
+  let textColor: string = palette[theme].PRIMARY;
   if (date.type === 'prev' || date.type === 'next') {
     textColor = '#95a5a6';
   } else if (date.date.match(/Saturday/)) {
-    textColor = '#2980b9';
+    textColor = saturdayColor;
   } else if (date.date.match(/Sunday/)) {
-    textColor = '#e74c3c';
+    textColor = sundayColor;
   }
 
-  const selected = registerdDates.indexOf(date.date) !== -1 ? true : false;
+  const selected = registeredDates.indexOf(date.date) !== -1 ? true : false;
 
   return (
     <DateButton selected={selected} onClick={handleClickDate}>

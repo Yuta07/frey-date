@@ -1,22 +1,22 @@
 import { storiesOf } from '@storybook/react';
-import * as React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FreyDates } from '../src/components/FreyDates';
 
 const FreyDatesStories = () => {
-  const [registerdDates, setRegisterdDates] = React.useState([]);
-  const [selectedDates, setSelectedDates] = React.useState([]);
+  const [registeredDates, setRegisteredDates] = useState([]);
+  const [selectedDates, setSelectedDates] = useState([]);
 
-  const onClickDate = (date: string) => {
-    if (registerdDates.indexOf(date) >= 0) {
-      const newValues = registerdDates.filter(value => value !== date);
-      setRegisterdDates(newValues);
+  const handleDateClick = (date: string) => {
+    if (registeredDates.indexOf(date) >= 0) {
+      const newValues = registeredDates.filter((value) => value !== date);
+      setRegisteredDates(newValues);
     } else {
-      setRegisterdDates([...registerdDates, date]);
+      setRegisteredDates([...registeredDates, date]);
     }
 
     if (selectedDates.indexOf(date) !== -1) {
-      const newSelectedValues = selectedDates.filter(value => value !== date);
+      const newSelectedValues = selectedDates.filter((value) => value !== date);
       setSelectedDates(newSelectedValues);
     } else {
       setSelectedDates([...selectedDates, date]);
@@ -26,7 +26,7 @@ const FreyDatesStories = () => {
   return (
     <Wrapper>
       <Container>
-        <FreyDates registerdDates={registerdDates} selectedDates={selectedDates} onClickDate={onClickDate} />
+        <FreyDates registeredDates={registeredDates} selectedDates={selectedDates} handleDateClick={handleDateClick} />
       </Container>
     </Wrapper>
   );

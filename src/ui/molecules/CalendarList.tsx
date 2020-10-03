@@ -1,21 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DateText } from '../atoms/DateText';
-import { DateTextProps, DayList } from '../../types';
+import { AppProps, DayList } from '../../types';
 
-interface Props extends DateTextProps {
+type CalendarListProps = Omit<AppProps, 'selectedDates' | 'currentYear' | 'currentMonth'>;
+
+type Props = {
   dateList: DayList[];
-}
+};
 
-export const CalendarList = ({ ...props }: Props) => {
-  const { registerdDates, onClickDate, onMovePreviousMonth, onMoveNextMonth, dateList } = props;
-
-  const renderCalendarList = dateList.map(list => {
+export const CalendarList = ({
+  registeredDates,
+  handleDateClick,
+  onMovePreviousMonth,
+  onMoveNextMonth,
+  dateList,
+}: Props & CalendarListProps) => {
+  const renderCalendarList = dateList.map((list) => {
     return (
       <List key={list.date}>
         <DateText
-          registerdDates={registerdDates}
-          onClickDate={onClickDate}
+          registeredDates={registeredDates}
+          handleDateClick={handleDateClick}
           onMovePreviousMonth={onMovePreviousMonth}
           onMoveNextMonth={onMoveNextMonth}
           date={list}

@@ -14,28 +14,33 @@ module.exports = {
       jsx: true,
       modules: true,
     },
-    project: './tsconfig.json',
   },
   extends: [
     'react-app',
     'plugin:react-app/recommended',
+    'plugin:react-hooks/recommended',
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
     'prettier/@typescript-eslint',
-    'plugin:react-hooks/recommended',
   ],
-  plugins: ['react-hooks', '@typescript-eslint', 'prettier', 'react'],
+  plugins: ['@typescript-eslint', 'prettier', 'react', 'react-hooks'],
   rules: {
+    'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
+    'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
+    'react/react-in-jsx-scope': "off",
     '@typescript-eslint/no-namespace': 'error',
     '@typescript-eslint/no-require-imports': 'warn',
-    '@typescript-eslint/no-unused-vars': 'error',
-    '@typescript-eslint/prefer-for-of': 'warn',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/prefer-for-of': 'off',
+    '@typescript-eslint/no-explicit-ann': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-empty-function': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
+    '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/triple-slash-reference': 'off',
+    '@typescript-eslint/no-use-before-define': 'off'
   },
   settings: {
     react: {
