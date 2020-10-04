@@ -7,6 +7,7 @@ export interface Theme {
   saturdayColor: string;
   sundayColor: string;
   theme: Background;
+  currentDate: string;
 }
 
 export const theme = () => {
@@ -15,6 +16,7 @@ export const theme = () => {
     saturdayColor: '#54a0ff',
     sundayColor: '#ee5253',
     theme: 'light',
+    currentDate: '',
   };
 
   return appTheme;

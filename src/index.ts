@@ -1,9 +1,3 @@
-export { default as Button } from './components/Button';
-export * from './components/Button';
-
-export { default as Base } from './components/Base';
-export * from './components/Base';
-
 export * from './components/FreyDates';
 
 // atoms

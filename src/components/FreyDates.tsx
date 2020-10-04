@@ -7,6 +7,7 @@ import { MainProps } from '../types';
 
 const initialMonth = moment().month();
 const initialYear = moment().year();
+const currentDate = moment().format('YYYY-MM-DD-dddd');
 
 export const FreyDates = ({
   registeredDates,
@@ -42,6 +43,7 @@ export const FreyDates = ({
         saturdayColor: saturdayColor,
         sundayColor: sundayColor,
         theme: theme,
+        currentDate: currentDate,
       }}
     >
       <GlobalStyle />

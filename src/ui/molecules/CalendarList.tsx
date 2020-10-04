@@ -1,6 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { DateText } from '../atoms/DateText';
+import { Theme } from '../../themes/Theme';
+import { useTheme } from '../../themes/ThemeProvider';
 import { AppProps, DayList } from '../../types';
 
 type CalendarListProps = Omit<AppProps, 'selectedDates' | 'currentYear' | 'currentMonth'>;
@@ -16,9 +18,12 @@ export const CalendarList = ({
   onMoveNextMonth,
   dateList,
 }: Props & CalendarListProps) => {
+  const themes = useTheme();
+  const { currentDate } = themes;
+
   const renderCalendarList = dateList.map((list) => {
     return (
-      <List key={list.date} className="frey-dates-list">
+      <List key={list.date} current={list.date === currentDate} themes={themes} className="frey-dates-list">
         <DateText
           registeredDates={registeredDates}
           handleDateClick={handleDateClick}
@@ -42,7 +47,26 @@ const CalendarUnordered = styled.ul`
   list-style: none;
 `;
 
-const List = styled.li`
-  width: calc(100% / 7);
-  text-align: center;
+const List = styled.li<{ current: boolean; themes: Theme }>`
+  ${({ current, themes }) => {
+    const { palette, theme } = themes;
+
+    return css`
+      width: calc(100% / 7);
+      text-align: center;
+      position: relative;
+
+      ${current &&
+      `
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: -3px;
+          left: 6px;
+          width: 28px;
+          border-bottom: 2px solid ${palette[theme].GRAY};
+        }
+      `}
+    `;
+  }}
 `;
