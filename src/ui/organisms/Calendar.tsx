@@ -1,7 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { CalendarBody } from './CalendarBody';
 import { CalendarHeader } from '../molecules/CalendarHeader';
+import { Theme } from '../../themes/Theme';
+import { useTheme } from '../../themes/ThemeProvider';
 import { AppProps } from '../../types';
 
 export const Calendar = ({
@@ -13,8 +15,10 @@ export const Calendar = ({
   onMovePreviousMonth,
   onMoveNextMonth,
 }: AppProps) => {
+  const themes = useTheme();
+
   return (
-    <Wrapper className="frey-dates-wrapper">
+    <Wrapper themes={themes} className="frey-dates-wrapper">
       <CalendarHeader
         currentYear={currentYear}
         currentMonth={currentMonth}
@@ -34,7 +38,15 @@ export const Calendar = ({
   );
 };
 
-const Wrapper = styled.div`
-  height: 100%;
-  width: 280px;
+const Wrapper = styled.div<{ themes: Theme }>`
+  ${({ themes }) => {
+    const { palette, theme } = themes;
+    return css`
+      height: 100%;
+      width: 320px;
+      padding: 10px;
+      background: ${palette[theme].BACKGROUND};
+      border-radius: 15px;
+    `;
+  }}
 `;

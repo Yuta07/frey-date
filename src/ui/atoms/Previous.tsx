@@ -11,14 +11,14 @@ export const Previous = ({ onMovePreviousMonth }: Props) => {
   const { palette, theme } = themes;
 
   return (
-    <PreviousButton onClick={onMovePreviousMonth}>
+    <PreviousButton onClick={onMovePreviousMonth} className="frey-dates-preview-button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={20}
         height={20}
         viewBox="0 0 20 20"
         fill="none"
-        stroke={palette[theme].PRIMARY}
+        stroke={palette[theme].GRAY}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -31,13 +31,15 @@ export const Previous = ({ onMovePreviousMonth }: Props) => {
 
 const PreviousButton = styled.button`
   padding: 4px;
+  margin: 0 auto;
   border: none;
   background: none;
+  text-align: center;
   cursor: pointer;
 
   &:hover {
     transition: 0.3s;
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   &:focus {

@@ -28,6 +28,14 @@ const FreyDatesStories = () => {
       <Container>
         <FreyDates registeredDates={registeredDates} selectedDates={selectedDates} handleDateClick={handleDateClick} />
       </Container>
+      <Container>
+        <FreyDates
+          registeredDates={registeredDates}
+          selectedDates={selectedDates}
+          handleDateClick={handleDateClick}
+          theme="dark"
+        />
+      </Container>
     </Wrapper>
   );
 };
@@ -42,4 +50,6 @@ const Wrapper = styled.div`
   margin: 100px auto;
 `;
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin: 50px 0;
+`;

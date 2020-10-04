@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { CalendarList } from '../molecules/CalendarList';
 import { DayWeekList } from '../molecules/DayWeekList';
 import { DayList } from '../../types';
@@ -14,21 +14,14 @@ import {
 } from '../../utils/ConvertDate';
 import { AppProps } from '../../types';
 
-type Props = {
-  border?: boolean;
-};
-
-type BodyProps = Props & AppProps;
-
 export const CalendarBody = ({
-  border,
   registeredDates,
   handleDateClick,
   currentYear,
   currentMonth,
   onMovePreviousMonth,
   onMoveNextMonth,
-}: BodyProps) => {
+}: AppProps) => {
   const startDayofWeek = getDayofWeek(getStartDate(currentYear, currentMonth));
   const previousMonthDate = getPreviousMonthDate(getStartDate(currentYear, currentMonth));
   const nextMonthDate = getNextMonthDate(getLastDate(currentYear, currentMonth));
@@ -79,7 +72,7 @@ export const CalendarBody = ({
   return (
     <>
       <DayWeekList />
-      <CalenderBodyField border={border} color="#95a5a6">
+      <CalenderBodyField className="frey-dates-body-field">
         {dateList.map((list, index) => {
           return (
             <Fragment key={index}>
@@ -98,14 +91,6 @@ export const CalendarBody = ({
   );
 };
 
-const CalenderBodyField = styled.div<{ border: Props['border']; color: string }>`
-  ${({ border, color }) => {
-    return css`
-      padding: 0 5px 5px;
-      background: #fafcff;
-      border: 1px solid ${border ? color : 'transparent'};
-      border-top: none;
-      border-radius: 0 0 8px 8px;
-    `;
-  }}
+const CalenderBodyField = styled.div`
+  padding: 5px 5px;
 `;

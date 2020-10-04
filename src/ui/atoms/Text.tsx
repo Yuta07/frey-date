@@ -7,28 +7,34 @@ type Props = {
   type: 'strong' | 'p' | 'span';
 };
 
-export const Text = ({ color = '#fefefe', text, type }: Props) => {
+export const Text = ({ color = '#ffffff', text, type }: Props) => {
   let content: React.ReactNode;
 
   switch (type) {
     case 'strong':
       content = (
         <>
-          <HeadingSecond color={color}>{text}</HeadingSecond>
+          <Strong color={color} className="frey-dates-strong-text">
+            {text}
+          </Strong>
         </>
       );
       break;
     case 'p':
       content = (
         <>
-          <Paragraph color={color}>{text}</Paragraph>
+          <Paragraph color={color} className="frey-dates-paragraph-text">
+            {text}
+          </Paragraph>
         </>
       );
       break;
     case 'span':
       content = (
         <>
-          <Span color={color}>{text}</Span>
+          <Span color={color} className="frey-dates-span-text">
+            {text}
+          </Span>
         </>
       );
       break;
@@ -39,12 +45,11 @@ export const Text = ({ color = '#fefefe', text, type }: Props) => {
   return <>{content}</>;
 };
 
-const HeadingSecond = styled.p<{ color: string }>`
+const Strong = styled.strong<{ color: string }>`
   ${({ color }) => {
     return css`
       font-size: 16px;
       color: ${color};
-      font-weight: 550;
     `;
   }}
 `;
@@ -52,7 +57,7 @@ const HeadingSecond = styled.p<{ color: string }>`
 const Paragraph = styled.p<{ color: string }>`
   ${({ color }) => {
     return css`
-      font-size: 16px;
+      font-size: 14px;
       color: ${color};
     `;
   }}
@@ -61,7 +66,7 @@ const Paragraph = styled.p<{ color: string }>`
 const Span = styled.span<{ color: string }>`
   ${({ color }) => {
     return css`
-      font-size: 16px;
+      font-size: 14px;
       color: ${color};
     `;
   }}

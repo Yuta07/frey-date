@@ -3,6 +3,7 @@ export type Palette = {
     PRIMARY: string;
     SECONDARY: string;
     BACKGROUND: string;
+    LIGHT_GRAY: string;
     GRAY: string;
     MAIN: string;
     TRANSPARENT: string;
@@ -11,6 +12,7 @@ export type Palette = {
     PRIMARY: string;
     SECONDARY: string;
     BACKGROUND: string;
+    LIGHT_GRAY: string;
     GRAY: string;
     MAIN: string;
     TRANSPARENT: string;
@@ -19,6 +21,7 @@ export type Palette = {
     PRIMARY: string;
     SECONDARY: string;
     BACKGROUND: string;
+    LIGHT_GRAY: string;
     GRAY: string;
     MAIN: string;
     TRANSPARENT: string;
@@ -30,6 +33,7 @@ export const PALETTE: Palette = {
     PRIMARY: '#222f3e',
     SECONDARY: '#ffffff',
     BACKGROUND: '#ffffff',
+    LIGHT_GRAY: '#c8d6e5',
     GRAY: '#8395a7',
     MAIN: '#ff9f43',
     TRANSPARENT: 'transparent',
@@ -38,6 +42,7 @@ export const PALETTE: Palette = {
     PRIMARY: '#ffffff',
     SECONDARY: '#ffffff',
     BACKGROUND: '#242526',
+    LIGHT_GRAY: '#696969',
     GRAY: '#c8d6e5',
     MAIN: '#ff9f43',
     TRANSPARENT: 'transparent',
@@ -45,7 +50,8 @@ export const PALETTE: Palette = {
   transparent: {
     PRIMARY: '#222f3e',
     SECONDARY: '#ffffff',
-    BACKGROUND: '',
+    BACKGROUND: 'transparent',
+    LIGHT_GRAY: '#c8d6e5',
     GRAY: '#8395a7',
     MAIN: '#ff9f43',
     TRANSPARENT: 'transparent',

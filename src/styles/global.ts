@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-size: 14px;
-  font-family: ${FONT_FAMILY};
-  letter-spacing: 0.1em;
+    font-family: ${FONT_FAMILY};
+    letter-spacing: 0.5px;
   }
 `;

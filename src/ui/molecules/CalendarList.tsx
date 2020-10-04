@@ -18,7 +18,7 @@ export const CalendarList = ({
 }: Props & CalendarListProps) => {
   const renderCalendarList = dateList.map((list) => {
     return (
-      <List key={list.date}>
+      <List key={list.date} className="frey-dates-list">
         <DateText
           registeredDates={registeredDates}
           handleDateClick={handleDateClick}
@@ -30,7 +30,7 @@ export const CalendarList = ({
     );
   });
 
-  return <CalendarUnordered>{renderCalendarList}</CalendarUnordered>;
+  return <CalendarUnordered className="frey-dates-day-list">{renderCalendarList}</CalendarUnordered>;
 };
 
 const CalendarUnordered = styled.ul`
