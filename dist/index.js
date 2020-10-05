@@ -7,7 +7,7 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     o[k2] = m[k];
 }));
 var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./components/FreyDates"), exports);
@@ -20,3 +20,6 @@ __exportStar(require("./ui/molecules/DayWeekList"), exports);
 __exportStar(require("./ui/molecules/CalendarList"), exports);
 __exportStar(require("./ui/organisms/Calendar"), exports);
 __exportStar(require("./ui/organisms/CalendarBody"), exports);
+__exportStar(require("./themes/Theme"), exports);
+__exportStar(require("./themes/ThemeProvider"), exports);
+//# sourceMappingURL=index.js.map

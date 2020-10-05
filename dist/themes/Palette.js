@@ -25,3 +25,4 @@ exports.PALETTE = {
         TRANSPARENT: 'transparent',
     },
 };
+//# sourceMappingURL=Palette.js.map

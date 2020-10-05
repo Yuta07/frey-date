@@ -31,3 +31,4 @@ const PreviousButton = styled_components_1.default.button `
     outline: none;
   }
 `;
+//# sourceMappingURL=Previous.js.map

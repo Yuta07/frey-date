@@ -26,7 +26,7 @@ const FreyDatesStories = () => {
   return (
     <Wrapper>
       <Container>
-        <FreyDates registeredDates={[]} selectedDates={[]} handleDateClick={handleDateClick} />
+        <FreyDates registeredDates={[]} selectedDates={[]} handleDateClick={() => {}} />
       </Container>
       <Container>
         <FreyDates registeredDates={registeredDates} selectedDates={selectedDates} handleDateClick={handleDateClick} />

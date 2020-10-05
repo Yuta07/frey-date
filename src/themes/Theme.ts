@@ -1,16 +1,16 @@
 import { Palette, PALETTE } from './Palette';
 
-export type Background = 'light' | 'dark';
+export type FreyTheme = 'light' | 'dark';
 
 export interface Theme {
   palette: Palette;
-  theme: Background;
+  theme: FreyTheme;
 }
 
-export const theme = () => {
+export const theme = (theme: FreyTheme) => {
   const appTheme: Theme = {
     palette: PALETTE,
-    theme: 'light',
+    theme: theme,
   };
 
   return appTheme;

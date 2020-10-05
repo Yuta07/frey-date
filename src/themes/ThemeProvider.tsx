@@ -1,7 +1,7 @@
 import React, { createContext, FC, useContext } from 'react';
 import { theme, Theme } from './Theme';
 
-export const ThemeContext = createContext<Theme>(theme());
+export const ThemeContext = createContext<Theme>(theme('light'));
 
 type Props = {
   theme: Theme;

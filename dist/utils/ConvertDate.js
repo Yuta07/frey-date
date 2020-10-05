@@ -37,3 +37,4 @@ exports.getDateFromOpposite = (year, month, day = 0) => {
 exports.getDayofWeek = (date) => {
     return moment_1.default(date).day();
 };
+//# sourceMappingURL=ConvertDate.js.map
